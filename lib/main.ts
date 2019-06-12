@@ -38,7 +38,7 @@ export async function main(_args: string[]) {
   //   There is no assumption that this is named "master".
   // Currently we assume the GitHub remote is named "origin".
   {
-    out(`Fetching all branches and PRs from "origin"...\n`)
+    out(`Fetching all branches and PRs from remote "origin"...\n`)
     let expectedConfig = `+refs/heads/*:refs/remotes/origin/*`
     let config = await getGetRemoteFetchConfig("origin")
     if (config !== expectedConfig) {
@@ -67,7 +67,7 @@ export async function main(_args: string[]) {
   {
     let branchesAndCommits = await gitGetBranchesAndCommits()
     for (let { branch, commit } of branchesAndCommits) {
-      out(`Checking branch ${branch}:\n`)
+      out(`Checking branch ${JSON.stringify(branch)}:\n`)
 
       // This check shouldn't need to exist. It solves two practical issues:
       // 1. When the branch tip is part of master, there are a lot of matching

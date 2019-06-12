@@ -3,7 +3,7 @@ export function out(output: string | string[]) {
     Deno.stdout.writeSync(new TextEncoder().encode(output))
   } else {
     for (let line of output) {
-      out(`${wordWrap(line, { width: 80 })}\n`)
+      out(`${wordWrap(line, { width: 80, indent: "" })}\n`)
     }
   }
 }

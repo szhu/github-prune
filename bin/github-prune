@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ROOT=$(dirname "${BASH_SOURCE[0]}")/..
+deno run --allow-run "$ROOT/lib/main.ts" "$@"

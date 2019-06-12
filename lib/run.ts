@@ -8,13 +8,13 @@ export async function run(args: string[]) {
 }
 
 export async function runAndGetOutput(args: string[]) {
-  // console.log(JSON.stringify(args))
   let process = Deno.run({ args, stdout: "piped" })
+  let output = await process.output()
   let status = await process.status()
   if (!status.success) {
     throw new Error(`Error when running command: ${JSON.stringify(args)}`)
   }
-  return new TextDecoder("utf-8").decode(await process.output())
+  return new TextDecoder("utf-8").decode(output)
 }
 
 export async function runAndGetOutputLines(args: string[]) {

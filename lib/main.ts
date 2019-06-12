@@ -7,6 +7,7 @@ import {
   gitFetchPrune,
 } from "./git.ts"
 import { out } from "./out.ts"
+import { run } from "./run.ts"
 
 export async function main(_args: string[]) {
   // Print usage notes, wait for user to confirm.
@@ -49,6 +50,9 @@ export async function main(_args: string[]) {
       ])
       Deno.exit(1)
     }
+    // Hacky fix for the following error:
+    //     error: cannot lock ref 'refs/remotes/origin/HEAD'
+    await run(["git", "update-ref", "-d", "refs/remotes/origin/HEAD"])
     await gitFetchPrune("origin", [
       "+refs/heads/*:refs/remotes/origin/*",
       "+refs/pull/*/head:refs/remotes/origin/pull/*/head",

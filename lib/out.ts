@@ -3,7 +3,12 @@ export function out(output: string | string[]) {
     Deno.stdout.writeSync(new TextEncoder().encode(output))
   } else {
     for (let line of output) {
-      out(`${wordWrap(line, { width: 80, indent: "" })}\n`)
+      // Support hanging indents with little developer effort!
+      let [_line, firstLineIndent, text] = line.match(/^([^A-Za-z0-9]* |)(.*)$/)
+      let indent = firstLineIndent.replace(/[^ ]/g, " ")
+      let wrapped = wordWrap(text, { width: 80, indent })
+      wrapped = firstLineIndent + wrapped.slice(firstLineIndent.length)
+      out(`${wrapped}\n`)
     }
   }
 }

@@ -104,9 +104,9 @@ export async function main(_args: string[]) {
         out([
           `  Exists only as PR(s): ${JSON.stringify(prBranches)}`,
           "  ❌  Deleting branch, since the PR's remote branch is gone.",
-          "",
         ])
         await gitDeleteBranch(branch)
+        out([""])
       } else {
         out([
           "  Tip of branch doesn't exist anywhere on the remote.",

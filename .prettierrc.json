@@ -18,7 +18,8 @@
     },
     {
       "files": [
-        ".prettierrc.json"
+        ".prettierrc.json",
+        "package.json"
       ],
       "options": {
         "parser": "json",

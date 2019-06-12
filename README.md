@@ -3,7 +3,7 @@
 This tool will delete all local branches:
 
 - whose latest commit has been pushed to a PR, and
-- whose Latest commit doesn't exist in a remote branch.
+- whose latest commit doesn't exist in a remote branch.
 
 This ensures that the remaining branches reflect either unpushed work, or
 branches in progress.
@@ -22,7 +22,7 @@ github-prune | tee -a github-prune-output.log
 
 If you run this tool only every now and then, this is the easiest option.
 
-1. Install [Deno](https://deno.land)
+1. Install [Deno](https://deno.land). (On macOS: `brew install deno`)
 2. cd into your repo.
 3. Run: `deno run --reload --allow-run https://github.com/szhu/github-prune/raw/master/lib/main.ts`
 
@@ -30,9 +30,10 @@ If you run this tool only every now and then, this is the easiest option.
 
 This option is more similar to a traditional install.
 
-1. Clone this repo.
-2. Either:
+1. Install [Deno](https://deno.land). (On macOS: `brew install deno`)
+2. Clone this repo.
+3. Either:
    - Make sure the `bin` folder in this repo is in your `$PATH`.
-   - Create an alias to `bin/github-prune`.
-3. cd into your repo.
-4. Run: `github-prune`
+   - Create an alias to the `bin/github-prune` script in this repo.
+4. cd into your repo.
+5. Run: `github-prune`

@@ -14,7 +14,7 @@ export async function main(_args: string[]) {
     out([
       "This tool will delete all local branches:",
       "- whose latest commit has been pushed to a PR, and",
-      "- whose Latest commit doesn't exist in a remote branch.",
+      "- whose latest commit doesn't exist in a remote branch.",
       "",
       "This ensures that the remaining branches reflect either unpushed work, or branches in progress.",
       "",

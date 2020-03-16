@@ -1,39 +1,44 @@
 # github-prune
 
-This tool will delete all local branches:
+Do you have many local Git branches, but most of them are super old?
 
-- whose latest commit has been pushed to a PR, and
-- whose latest commit doesn't exist in a remote branch.
+**github-prune** quickly and safely deletes branches you don't need anymore!
 
-This ensures that the remaining branches reflect either unpushed work, or
-branches in progress.
+## Purpose
 
-When this tool deletes local branches, it will print out the commit of each
-branch it deletes. You should save the output of this tool in case you want to
-use it later. An easy way to do this is with:
+Specifically, this tool will delete all local branches:
 
-```sh
-github-prune | tee -a github-prune-output.log
-```
+- Whose latest commit has been pushed to a PR, and
+- Whose latest commit doesn't exist in a remote branch.
 
-## Installing and using
+After running this tool, all remaining branches should be either branches that
+have unpushed work or branches that you're still working on.
 
-### Option 1: Running directly from GitHub
+## Installing
 
-If you run this tool only every now and then, this is the easiest option.
+**Step 1:**\
+Install [Deno](https://deno.land). (On macOS: `brew install deno`)
+
+**Step 2:**\
+`deno install -f --allow-run github-prune https://github.com/szhu/github-prune/raw/master/lib/main.ts`
+
+## Using
+
+In your terminal, `cd` into the repo you want to clean up, then run
+
+     ~/.deno/bin/github-prune
+
+This tool will print out an description of what it does and asks you to confirm
+before it does anything.
+
+Advanced: Add `~/.deno/bin` to your `PATH` and you can run this as `github-prune`!
+
+## Contributing
+
+It's easy to set up this tool for development as well. Here's how to get up and
+running:
 
 1. Install [Deno](https://deno.land). (On macOS: `brew install deno`)
-2. cd into your repo.
-3. Run: `deno run --reload --allow-run https://github.com/szhu/github-prune/raw/master/lib/main.ts`
-
-### Option 2: Running from installed location
-
-This option is more similar to a traditional install.
-
-1. Install [Deno](https://deno.land). (On macOS: `brew install deno`)
-2. Clone this repo.
-3. Either:
-   - Make sure the `bin` folder in this repo is in your `$PATH`.
-   - Create an alias to the `bin/github-prune` script in this repo.
-4. cd into your repo.
-5. Run: `github-prune`
+2. Clone this repo. Let's say you cloned it to `/path/to/github-prune`.
+3. `cd` into the repo that you want to test this tool on.
+4. Run: `deno --allow-run /path/to/github-prune/lib/main.ts`

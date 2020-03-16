@@ -4,7 +4,9 @@ export function out(output: string | string[]) {
   } else {
     for (let line of output) {
       // Support hanging indents with little developer effort!
-      let [_line, firstLineIndent, text] = line.match(/^([^A-Za-z0-9]* |)(.*)$/)
+      let [_line, firstLineIndent, text] = line.match(
+        /^([^A-Za-z0-9]* |)(.*)$/,
+      )!
       let indent = firstLineIndent.replace(/[^ ]/g, " ")
       let wrapped = wordWrap(text, { width: 80, indent })
       wrapped = firstLineIndent + wrapped.slice(firstLineIndent.length)
@@ -20,7 +22,7 @@ export function out(output: string | string[]) {
  * Released under the MIT License.
  */
 
-const wordWrap = function(str, options) {
+const wordWrap = function(str: any, options: any) {
   options = options || {}
   if (str == null) {
     return str
@@ -42,7 +44,7 @@ const wordWrap = function(str, options) {
   var result =
     indent +
     lines
-      .map(function(line) {
+      .map(function(line: any) {
         if (line.slice(-1) === "\n") {
           line = line.slice(0, line.length - 1)
         }
@@ -56,6 +58,6 @@ const wordWrap = function(str, options) {
   return result
 }
 
-function identity(str) {
+function identity(str: any) {
   return str
 }

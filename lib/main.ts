@@ -14,14 +14,17 @@ export async function main(_args: string[]) {
   {
     out([
       "This tool will delete all local branches:",
-      "- whose latest commit has been pushed to a PR, and",
-      "- whose latest commit doesn't exist in a remote branch.",
+      "- Whose latest commit has been pushed to a PR, and",
+      "- Whose latest commit doesn't exist in a remote branch.",
       "",
-      "This ensures that the remaining branches reflect either unpushed work, or branches in progress.",
+      "After running this tool, all remaining branches should be either branches that have unpushed work or branches that you're still working on.",
       "",
-      "When this tool deletes local branches, it will print out the commit of each branch it deletes. You should save the output of this tool in case you want to use it later. An easy way to do this is with:",
+      "Advanced: When this tool deletes local branches, it will print out the commit of each branch it deletes. You can save the output of this tool in case you want to use it later. An easy way to do this is with:",
       "",
       "    $ <this tool> | tee -a github-prune-output.log",
+      "",
+      "For more details about this tool, see:",
+      "https://github.com/szhu/github-prune",
       "",
       "Press enter to continue, or ^C to abort.",
     ])

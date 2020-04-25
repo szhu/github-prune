@@ -31,7 +31,7 @@ export async function main(_args: string[]) {
 
     // TODO: 1000 is arbitrary. Fix when we have a better way to readLine:
     // https://github.com/denoland/deno/issues/1805
-    Deno.stdin.readSync(new Uint8Array(1000))
+    await Deno.stdin.read(new Uint8Array(1000))
   }
 
   // Fetch everything from GitHub:

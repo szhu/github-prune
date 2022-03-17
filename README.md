@@ -20,7 +20,7 @@ have unpushed work or branches that you're still working on.
 Install [Deno](https://deno.land). (On macOS: `brew install deno`)
 
 **Step 2:**\
-`deno install -f --allow-run github-prune https://github.com/szhu/github-prune/raw/master/lib/main.ts`
+`deno install -f --allow-run --name github-prune https://github.com/szhu/github-prune/raw/master/lib/main.ts`
 
 ## Using
 
